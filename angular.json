@@ -1,0 +1,155 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "sic-mapping-toolkit": {
+      "projectType": "library",
+      "root": "projects/sic-mapping-toolkit",
+      "sourceRoot": "projects/sic-mapping-toolkit/src",
+      "prefix": "sic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/sic-mapping-toolkit/tsconfig.lib.json",
+            "project": "projects/sic-mapping-toolkit/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sic-mapping-toolkit/src/test.ts",
+            "tsConfig": "projects/sic-mapping-toolkit/tsconfig.spec.json",
+            "karmaConfig": "projects/sic-mapping-toolkit/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sic-mapping-toolkit/tsconfig.lib.json",
+              "projects/sic-mapping-toolkit/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "sic-mapping-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/sic-mapping-app",
+      "sourceRoot": "projects/sic-mapping-app/src",
+      "prefix": "sic",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/sic-mapping-app",
+            "index": "projects/sic-mapping-app/src/index.html",
+            "main": "projects/sic-mapping-app/src/main.ts",
+            "polyfills": "projects/sic-mapping-app/src/polyfills.ts",
+            "tsConfig": "projects/sic-mapping-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/sic-mapping-app/src/favicon.ico",
+              "projects/sic-mapping-app/src/assets"
+            ],
+            "styles": [
+              "projects/sic-mapping-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/sic-mapping-app/src/environments/environment.ts",
+                  "with": "projects/sic-mapping-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "sic-mapping-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "sic-mapping-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "sic-mapping-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/sic-mapping-app/src/test.ts",
+            "polyfills": "projects/sic-mapping-app/src/polyfills.ts",
+            "tsConfig": "projects/sic-mapping-app/tsconfig.spec.json",
+            "karmaConfig": "projects/sic-mapping-app/karma.conf.js",
+            "assets": [
+              "projects/sic-mapping-app/src/favicon.ico",
+              "projects/sic-mapping-app/src/assets"
+            ],
+            "styles": [
+              "projects/sic-mapping-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/sic-mapping-app/tsconfig.app.json",
+              "projects/sic-mapping-app/tsconfig.spec.json",
+              "projects/sic-mapping-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/sic-mapping-app/e2e/protractor.conf.js",
+            "devServerTarget": "sic-mapping-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "sic-mapping-app:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "sic-mapping-toolkit"
+}

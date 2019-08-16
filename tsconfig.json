@@ -1,0 +1,40 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": [
+      "node_modules/@types"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "sicmapping": [
+        "dist/sicmapping"
+      ],
+      "sicmapping/*": [
+        "dist/sicmapping/*"
+      ],
+      "sic-mapping-toolkit": [
+        "dist/sic-mapping-toolkit"
+      ],
+      "sic-mapping-toolkit/*": [
+        "dist/sic-mapping-toolkit/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}
