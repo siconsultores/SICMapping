@@ -1,6 +1,6 @@
-# SICMapping
+# SICMapping Toolkit
 
-SICMapping es una biblioteca para Angular que permite la creación de aplicaciones de Web Mapping por medio de OpenLayers
+SICMapping Toolkit es una biblioteca para Angular que permite la creación de aplicaciones de Web Mapping por medio de OpenLayers
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.1.3.
 
